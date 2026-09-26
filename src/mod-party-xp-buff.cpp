@@ -563,7 +563,7 @@ private:
 // Script registration
 // -----------------------------------------------------------------------------
 
-void Addmod_party_xp_buffScripts()
+void AddPartyXPBuffScripts()
 {
     new PartyXPBuffWorld();
     new PartyXPBuffPlayer();
