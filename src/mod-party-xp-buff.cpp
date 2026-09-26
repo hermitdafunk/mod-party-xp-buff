@@ -1,4 +1,4 @@
-```cpp
+cpp
 /*
  * mod-party-xp-buff
  *
@@ -571,4 +571,3 @@ void Addmod_party_xp_buffScripts()
     new PartyXPBuffGroup();
     new PartyXPBuffCommand();
 }
-```
