@@ -1,4 +1,3 @@
-cpp
 /*
  * mod-party-xp-buff
  *
