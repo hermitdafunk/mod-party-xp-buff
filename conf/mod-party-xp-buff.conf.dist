@@ -1,0 +1,22 @@
+###############################################
+# Party XP Buff
+###############################################
+
+# Enable the module.
+PartyXPBuff.Enable = 1
+
+# Additional XP granted to qualifying party members.
+#
+# 100 = +100% XP (2x normal XP)
+# 50  = +50% XP
+# 200 = +200% XP (3x normal XP)
+PartyXPBuff.BonusPercent = 100
+
+# Minimum number of members required for the bonus.
+PartyXPBuff.MinGroupSize = 3
+
+# Apply the bonus to bot characters as well.
+PartyXPBuff.ApplyToBots = 1
+
+# Announce Party Time state changes to the group.
+PartyXPBuff.Announce = 1
