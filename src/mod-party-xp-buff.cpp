@@ -45,6 +45,11 @@
 #include "Config.h"
 #include "Chat.h"
 
+#ifdef MOD_PLAYERBOTS
+#include "PlayerbotAI.h"
+#include "PlayerbotMgr.h"
+#endif
+
 #include <algorithm>
 #include <cstdint>
 #include <limits>
@@ -131,17 +136,26 @@ static bool IsGroupLargeEnough(Group* group)
 // Player eligibility
 // -----------------------------------------------------------------------------
 
+// WorldSession::IsBot() was removed upstream (mod-playerbots 037c014 / PR #2864).
+// Bot detection now goes through the playerbots manager.
+static bool IsPlayerBot(Player* player)
+{
+#ifdef MOD_PLAYERBOTS
+    return player && sPlayerbotsMgr.GetPlayerbotAI(player) != nullptr;
+#else
+    (void)player;
+    return false;
+#endif
+}
+
 static bool IsEligible(Player* player)
 {
     if (!player || !s_Enable)
         return false;
 
     // If bot support is disabled, bots do not receive the bonus.
-    if (!s_ApplyToBots)
-    {
-        if (player->GetSession() && player->GetSession()->IsBot())
-            return false;
-    }
+    if (!s_ApplyToBots && IsPlayerBot(player))
+        return false;
 
     Group* group = player->GetGroup();
 
